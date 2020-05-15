@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 
 import org.apache.http.client.config.RequestConfig;
@@ -32,19 +31,27 @@ public class ConfiguredRestTemplate {
 	@Value("${https.trust-store-self-sign}")
 	private boolean selfSignTrust;
 	
+	@Value("${server.ssl.key-store-type}")
 	private String keyStoreType;
+	
+	@Value("${server.ssl.key-store}")
 	private String keyStorePath;
 	
-	@Value("${'${server.ssl.key-store-password}'.toCharArray()}")
+	@Value("#{'${server.ssl.key-store-password}'.toCharArray()}")
 	private char[] keyStorePassword;
 	
+	@Value("${server.ssl.trust-store-type}")
 	private String trustStoreType;
+	
+	@Value("${server.ssl.trust-store}")
 	private String trustStorePath;
+	
+	@Value("#{'${server.ssl.trust-store-password}'.toCharArray()}")
 	private char[] trustStorePassword;
 	
-	private boolean hostNameVerification;
+	private boolean hostNameVerification = false;
 	
-	private int timeout;
+	private int timeout=200000;
 	
 	@Value("${https.callout.connection-pool}")
 	private int connectionPool;

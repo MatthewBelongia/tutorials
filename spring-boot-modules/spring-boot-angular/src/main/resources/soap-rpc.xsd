@@ -1,0 +1,12 @@
+<xs:schema
+	targetNamespace="http://www.w3.org/2003/05/soap-rpc"
+	xmlns:tns="http://www.w3.org/2003/05/soap-rpc"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="result" type="xs:QName" />
+	<xs:simpleType name="faultcodeEnum">
+		<xs:restriction base="xs:QName">
+			<xs:enumeration value="tns:ProcedureNotPresent" />
+			<xs:enumeration value="tns:BadArguments" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
