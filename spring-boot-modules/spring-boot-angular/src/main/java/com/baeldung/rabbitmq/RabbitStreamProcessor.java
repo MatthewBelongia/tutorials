@@ -8,11 +8,15 @@ public interface RabbitStreamProcessor {
 	
 	String RABBIT_INPUT_QUEUE = "test-queue";
 	String RABBIT_OUTPUT_QUEUE = "test-queue-output";
+	String RABBIT_LOG_QUEUE = "log-queue";
 	
 	@Input(RABBIT_INPUT_QUEUE)
 	MessageChannel rabbitInputQueue();
 	
 	@Output(RABBIT_OUTPUT_QUEUE)
 	MessageChannel rabbitOutputQueue();
+	
+	@Output(RABBIT_LOG_QUEUE)
+	MessageChannel rabbitLogQueue();
 
 }

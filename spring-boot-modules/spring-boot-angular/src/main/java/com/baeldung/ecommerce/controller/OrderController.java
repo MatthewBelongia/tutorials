@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.baeldung.aspect.AspectLogger;
 import com.baeldung.ecommerce.dto.OrderProductDto;
 import com.baeldung.ecommerce.exception.ResourceNotFoundException;
 import com.baeldung.ecommerce.model.Order;
@@ -53,6 +54,7 @@ public class OrderController {
 
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
+	@AspectLogger("Order List")
 	public @NotNull Iterable<Order> list() {
 		byte[] bytePayload = "test".getBytes();
 		rabbitMqProcessor.rabbitOutputQueue().send(MessageBuilder.withPayload(bytePayload)
